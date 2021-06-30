@@ -3,7 +3,10 @@
 IS_PRESENT_FULL_TIME=1
 IS_PRESENT_HALF_TIME=0
 empWagePerHrs=20
-
+NUM_OF_WORKING_DAYS=20
+totalEmpHrs=0
+totalWorkingDays=0
+empDays=1
 empCheck=$((RANDOM%3))
 function getworkingHrs() {
 	if [ $empCheck -eq $IS_PRESENT_FULL_TIME ]
@@ -17,5 +20,12 @@ function getworkingHrs() {
 	fi
 echo $empHrs
 }
-
-workingHours="$(getworkingHrs $empCheck)"
+while [empDays -ge 20]
+do
+	((empDays++))
+	
+	workingHours="$(getworkingHrs $empCheck)"
+	dailyWage=&(($workingHours*$empWagePerHrs))
+	totalEmpHrs=&(($totalEmpHrs+$workingHours))
+done
+totalWage=&(($totalEmpHrs*$empWagePerHrs))
