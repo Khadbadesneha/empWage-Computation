@@ -5,6 +5,7 @@ IS_PRESENT_HALF_TIME=0
 empWagePerHrs=20
 empDaysMonth=20
 empCheck=$((RANDOM%3))
+
 case $empCheck in
 			$IS_PRESENT_FULL_TIME)
 										empHrs=8
